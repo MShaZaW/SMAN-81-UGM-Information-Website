@@ -3,50 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <!-- Link to your CSS file -->
+    <title>SMAN 81 UGM Information</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1>All You Need To Know About UGM</h1>
-        <nav>
-            <ul>
-                <!-- Home Link: Points to the current page (index.html) -->
-                <li><a href="index.html">Home</a></li>
-
-                <!-- Contact Link: Points to a new page (contact.html) -->
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-        </nav>
+    <!-- Top Bar -->
+    <header id="top-bar">
+        <div id="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <div id="menu-btn">
+            <img src="images/menu.png" alt="Menu">
+        </div>
     </header>
 
     <!-- Main Section -->
     <main>
-        <section id="posts">
-            <!-- Post 1: Link to a specific post page (pionir.html) -->
-            <article>
-                <h2><a href="pionir.html">Pionir UGM</a></h2>
-                <p>Gimana sih, ospek UGM?</p>
-            </article>
-            <!-- Post 2: Link to a specific post page (gelex.html) -->
-            <article>
-                <h2><a href="gelex.html">Gelex</a></h2>
-                <p>Apa saja sih ukm, organisasi, dan komunitas di dalam ugm?!</p>
-            </article>
-            <!-- Post 3: Link to a specific post page (porsenigama.html) -->
-            <article>
-                <h2><a href="porsenigama.html">Porsenigama</a></h2>
-                <p>Apa sih event perlombaan ini di UGM?</p>
-            </article>
+        <section id="welcome-section" class="connected-section" data-bg="images/welcomeBackground.jpg">
+            <div class="content">
+                <h1>Halo siswa siswi SMAN 81</h1>
+                <p>Ini semua yang kalian harus ketahui tentang UGM dan aktivitas aktivitas semester 1</p>
+            </div>
         </section>
 
-        <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2025 UGM SMAN 81 Alumni</p>
-        </footer>
+        <section id="posts">
+            <article class="connected-section" data-bg="images/post1Background.jpg">
+                <div class="content">
+                    <h2><a href="pionir.html">Pionir UGM</a></h2>
+                    <p>Gimana sih, ospek UGM?</p>
+                </div>
+            </article>
+            <article class="connected-section" data-bg="images/post2Background.jpg">
+                <div class="content">
+                    <h2><a href="gelex.html">Gelex</a></h2>
+                    <p>Apa saja sih ukm, organisasi, dan komunitas di dalam UGM?</p>
+                </div>
+            </article>
+            <article class="connected-section" data-bg="images/post3Background.jpg">
+                <div class="content">
+                    <h2><a href="porsenigama.html">Porsenigama</a></h2>
+                    <p>Apa sih event perlombaan ini di UGM?</p>
+                </div>
+            </article>
+        </section>
     </main>
+
+    <script>
+        // Toggle 'scrolled' class on the top bar based on scroll position
+        const topBar = document.getElementById("top-bar");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 0) {
+                topBar.classList.add("scrolled");
+            } else {
+                topBar.classList.remove("scrolled");
+            }
+        });
+
+        // Apply background images from data-bg attribute
+        document.querySelectorAll('.connected-section').forEach((section) => {
+            const bgImage = section.getAttribute('data-bg');
+            if (bgImage) {
+                section.style.backgroundImage = `url(${bgImage})`;
+            }
+        });
+    </script>
 </body>
 </html>
-

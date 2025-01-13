@@ -17,20 +17,33 @@
         </div>
     </header>
 
+    <!-- Sliding Menu -->
+    <div id="sliding-menu">
+        <button id="close-menu-btn">&times;</button>
+        <div class="menu-content">
+            <a href="index.html">HOME</a>
+            <a href="pionir.html">PIONIR</a>
+            <a href="gelex.html">GELEX</a>
+            <a href="porsenigama.html">PORSENIGAMA</a>
+            <a href="places.html">PLACES TO VISIT</a>
+        </div>
+    </div>
+
     <!-- Main Section -->
     <main>
         <!-- Welcome Section -->
         <section id="welcome-section" class="connected-section" data-bg="images/welcomeBackground.jpg">
             <div class="content">
                 <h1>Halo siswa siswi SMAN 81</h1>
-                <p>Ini semua yang kalian harus ketahui tentang UGM dan aktivitas aktivitas semester 1</p>
+                <p>Anak anak UGM ngapain aja sih di semester 1?</p>
+                <img src="images/mascot.png" alt="Mascot" class="mascot">
             </div>
         </section>
 
         <!-- Posts Section -->
         <section id="posts">
             <!-- Post 1 -->
-            <article class="connected-section post slide-in-left" data-bg="images/post1Background.jpg">
+            <article class="connected-section post" data-bg="images/post1Background.jpg">
                 <div class="content">
                     <h2><a href="pionir.html">Pionir UGM</a></h2>
                     <p>Gimana sih, ospek UGM?</p>
@@ -38,55 +51,188 @@
             </article>
 
             <!-- Post 2 -->
-            <article class="connected-section post slide-in-right" data-bg="images/post2Background.jpg">
+            <article class="connected-section post" data-bg="images/post2Background.jpg">
                 <div class="content">
                     <h2><a href="gelex.html">Gelex</a></h2>
-                    <p>Apa saja sih ukm, organisasi, dan komunitas di dalam UGM?</p>
+                    <p>Apa saja sih UKM, organisasi, dan komunitas di dalam UGM?</p>
                 </div>
             </article>
 
             <!-- Post 3 -->
-            <article class="connected-section post slide-in-left" data-bg="images/post3Background.jpg">
+            <article class="connected-section post" data-bg="images/post3Background.jpg">
                 <div class="content">
                     <h2><a href="porsenigama.html">Porsenigama</a></h2>
                     <p>Apa sih event perlombaan ini di UGM?</p>
                 </div>
             </article>
+
+            <!-- Post 4 -->
+            <article class="connected-section post" data-bg="images/post4Background.jpg">
+                <div class="content">
+                    <h2><a href="places.html">Places to Visit</a></h2>
+                    <p>Destinasi seru yang wajib kalian kunjungi di sekitar UGM!</p>
+                </div>
+            </article>
         </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact-us">
+            <h2>Contact Us!</h2>
+            <div class="carousel">
+                <!-- Top Row of Cards -->
+                <div class="loop top-loop">
+                    <div class="card">
+                        <img src="images/person1.jpg" alt="Person 1">
+                        <h3>Naila Anissa</h3>
+                        <p>Faculty: Science</p>
+                        <p>Major: Physics</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/person2.jpg" alt="Person 2">
+                        <h3>Ana Chadizahra</h3>
+                        <p>Faculty: Engineering</p>
+                        <p>Major: Mechanical</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/person3.jpg" alt="Person 3">
+                        <h3>Theresia Anggraini</h3>
+                        <p>Faculty: Arts</p>
+                        <p>Major: Literature</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/person4.jpg" alt="Person 4">
+                        <h3>Delviana Namira</h3>
+                        <p>Faculty: Business</p>
+                        <p>Major: Marketing</p>
+                    </div>
+                </div>
+
+                <!-- Bottom Row of Cards -->
+                <div class="loop bottom-loop">
+                    <div class="card">
+                        <img src="images/person5.jpg" alt="Person 5">
+                        <h3>Azka Ghaits</h3>
+                        <p>Faculty: Medicine</p>
+                        <p>Major: Surgery</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/person6.jpg" alt="Person 6">
+                        <h3>Ahsan Wiryawan</h3>
+                        <p>Faculty: Law</p>
+                        <p>Major: Criminal Law</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/person7.jpg" alt="Person 7">
+                        <h3>Arfa Fadilah</h3>
+                        <p>Faculty: Education</p>
+                        <p>Major: Early Childhood</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- Footer Section -->
+                <footer id="footer">
+                    <div class="footer-left">
+                        <a href="#welcome-section">Home</a><br>
+                        <a href="https://ugm.ac.id/" target="_blank">UGM Official Website</a>
+                    </div>
+                    <div class="footer-center">
+                        <p>&copy; 2025 SMAN 81 UGM Alumni</p>
+                    </div>
+                </footer>        
     </main>
 
+    <!-- JavaScript -->
     <script>
-        // Add 'scrolled' class to the top bar when the user scrolls
-        const topBar = document.getElementById("top-bar");
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 0) {
-                topBar.classList.add("scrolled");
-            } else {
-                topBar.classList.remove("scrolled");
-            }
-        });
-
-        // Apply background images using the data-bg attribute
+        // Select all connected sections (posts)
         const sections = document.querySelectorAll('.connected-section');
-        sections.forEach((section) => {
-            const bgImage = section.getAttribute('data-bg');
-            if (bgImage) {
-                section.style.backgroundImage = `url(${bgImage})`;
-            }
-        });
+        const welcomeSection = document.querySelector('#welcome-section');
 
-        // Intersection Observer for triggering animations on posts
-        const posts = document.querySelectorAll('.post');
+        // Intersection Observer to handle animations and background images
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
+                const content = entry.target.querySelector('.content');
+                const bgImage = entry.target.getAttribute('data-bg');
+
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    // Apply the background image from data-bg attribute
+                    if (bgImage) {
+                        entry.target.style.backgroundImage = `url(${bgImage})`;
+                    }
+
+                    // Trigger slide-in animation
+                    content.classList.add('visible');
+                    content.classList.remove('hidden');
+                } else if (entry.target !== welcomeSection) {
+                    // Slide-out animation for all sections except welcome
+                    content.classList.add('hidden');
+                    content.classList.remove('visible');
                 }
             });
-        }, { threshold: 0.5 }); // Trigger animation when 50% of the element is visible
+        }, {
+            threshold: 0.5 // Trigger when 50% of the element is visible
+        });
 
-        posts.forEach((post) => observer.observe(post));
+        // Observe each section
+        sections.forEach((section) => observer.observe(section));
+
+        // Apply background to the first section immediately
+        if (welcomeSection) {
+            const bgImage = welcomeSection.getAttribute('data-bg');
+            if (bgImage) {
+                welcomeSection.style.backgroundImage = `url(${bgImage})`;
+            }
+        }
+
+        // Menu toggle logic
+        const menuBtn = document.getElementById('menu-btn');
+        const slidingMenu = document.getElementById('sliding-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+
+        // Open menu
+        menuBtn.addEventListener('click', () => {
+            slidingMenu.classList.add('active');
+        });
+
+        // Close menu
+        closeMenuBtn.addEventListener('click', () => {
+            slidingMenu.classList.remove('active');
+        });
+
+        // Close menu when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!slidingMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                slidingMenu.classList.remove('active');
+            }
+        });
+
+        // Animate Contact Us Carousel
+        document.addEventListener('DOMContentLoaded', () => {
+            const topLoop = document.querySelector('.top-loop');
+            const bottomLoop = document.querySelector('.bottom-loop');
+
+            // Duplicate cards for seamless scrolling
+            topLoop.innerHTML += topLoop.innerHTML;
+            bottomLoop.innerHTML += bottomLoop.innerHTML;
+
+            let topScroll = 0;
+            let bottomScroll = 0;
+
+            function animateLoops() {
+                topScroll += 1;
+                bottomScroll -= 1;
+
+                topLoop.style.transform = `translateX(-${topScroll}px)`;
+                bottomLoop.style.transform = `translateX(${bottomScroll}px)`;
+
+                if (topScroll >= topLoop.scrollWidth / 2) topScroll = 0;
+                if (Math.abs(bottomScroll) >= bottomLoop.scrollWidth / 2) bottomScroll = 0;
+
+                requestAnimationFrame(animateLoops);
+            }
+
+            animateLoops();
+        });
     </script>
 </body>
 </html>

@@ -376,11 +376,12 @@ a:hover {
         margin: 5px 0; /* Adjust spacing for mobile */
     }
     #contact-us {
+        min-heigt: 300px;
         padding: 30px 10px; /* Reduce padding on mobile */
     }
 
     .carousel {
-        height: 450px; /* Reduce carousel height on smaller screens */
+        height: 200px; /* Reduce carousel height on smaller screens */
     }
 
     .loop .card {

@@ -376,7 +376,7 @@ a:hover {
         margin: 5px 0; /* Adjust spacing for mobile */
     }
     #contact-us {
-        min-heigt: 300px;
+        min-heigt: 450px;
         padding: 30px 10px; /* Reduce padding on mobile */
     }
 
@@ -412,4 +412,3 @@ a:hover {
         margin-top: 20px; /* Add spacing for mobile */
     }
 }
-

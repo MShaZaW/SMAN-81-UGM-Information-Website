@@ -381,7 +381,7 @@ a:hover {
     }
 
     .carousel {
-        height: 150px; /* Reduce carousel height on smaller screens */
+        height: 350px; /* Reduce carousel height on smaller screens */
     }
 
     .loop .card {

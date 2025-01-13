@@ -4,8 +4,124 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    background-color: #000; /* Fallback color */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: #000;
+}
+
+/* Footer Section */
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the top */
+    padding: 20px;
+    background-color: #111; /* Matches the Contact Us background */
+    color: #fff;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow at the top of the footer */
+    position: relative;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-left a {
+    color: #c2b280; /* Link color */
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block; /* Ensure links stack vertically */
+}
+
+.footer-left a:hover {
+    color: #fff; /* Change to white on hover */
+}
+
+.footer-center {
+    position: absolute;
+    bottom: 10px; /* Position near the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    text-align: center;
+}
+
+.footer-center p {
+    margin: 0;
+    font-size: 1rem; /* Adjust text size */
+    color: #888; /* Slightly muted text */
+}
+
+/* Contact Us Section */
+#contact-us {
+    padding: 40px 20px; /* Smaller vertical padding */
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+    min-height: 450px; /* Ensure total section height fits viewport */
+}
+
+#contact-us h2 {
+    font-size: 1.8rem; /* Smaller title font size */
+    margin-bottom: 30px; /* Reduce space below the title */
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 300px; /* Reduced height to ensure fit */
+}
+
+/* Loops */
+.loop {
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.loop .card {
+    background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    border-radius: 8px;
+    padding: 8px; /* Smaller padding inside cards */
+    margin: 10px; /* Reduced spacing between cards */
+    text-align: center;
+    flex: 0 0 calc(40% - 20px); /* Smaller cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.loop .card:hover {
+    transform: scale(1.05); /* Hover effect */
+}
+
+.loop img {
+    width: 40px; /* Smaller image size */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+}
+
+.loop h3 {
+    font-size: 0.9rem; /* Smaller font size for the name */
+    margin-bottom: 3px;
+}
+
+.loop p {
+    font-size: 0.8rem; /* Smaller paragraph font size */
+    margin: 2px 0;
+}
+
+/* Space between loops */
+.top-loop {
+    margin-bottom: 20px; /* Reduce space between loops */
+}
+
+.bottom-loop {
+    margin-top: 20px;
 }
 
 /* Top Bar */
@@ -24,33 +140,82 @@ body {
     transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for color and shadow */
 }
 
-/* Gradient Shadow for Top Bar */
-#top-bar::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 30px; /* Taller gradient for smoother transition */
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.1) 0%, /* Lighter fade at the bottom */
-        rgba(0, 0, 0, 0.3) 50%, /* Mid fade */
-        rgba(0, 0, 0, 0.5) 100% /* Darker at the top */
-    );
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+#menu-btn {
+    margin-right: 20px; /* Scoot the menu button slightly to the left */
+    margin-left: 30px; /* Fine-tune its position from the left edge */
 }
 
-#top-bar.scrolled {
-    background-color: rgba(0, 0, 0, 0.1); /* Transparent background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+#logo img,
+#menu-btn img {
+    height: 40px; /* Restrict the height */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 150px; /* Optional: restrict max width if the image is too wide */
+    object-fit: contain; /* Ensure the image is not distorted */
+}
+
+/* Sliding Menu */
+#sliding-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px); /* Shift the menu slightly to the left */
+    transition: transform 0.3s ease, opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#sliding-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Reset shift when active */
+}
+
+#sliding-menu .menu-content {
+    text-align: center;
+}
+
+#sliding-menu .menu-content a {
+    display: block;
+    font-size: 1.2rem; /* Smaller menu text */
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0; /* Space between menu items */
+    transition: color 0.3s ease;
+}
+
+#sliding-menu .menu-content a:hover {
+    color: #c2b280; /* Highlight color on hover */
+}
+
+/* Close Menu Button */
+#close-menu-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5rem; /* Smaller button */
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1200; /* Ensure the button is above everything */
+    transition: color 0.3s ease;
+}
+
+#close-menu-btn:hover {
+    color: #c2b280; /* Change color on hover */
 }
 
 /* Connected Sections */
 .connected-section {
     position: relative;
+    background-color: #333; /* Fallback color */
     background-size: cover; /* Ensure image covers the section */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* No tiling of the background */
@@ -63,63 +228,105 @@ body {
     overflow: hidden; /* Prevent pseudo-elements from overflowing */
 }
 
-/* Gradient Overlay at Section Edges */
-.connected-section::before {
+/* Welcome Section Background Blur */
+#welcome-section {
+    position: relative;
+    z-index: 1;
+}
+
+#welcome-section::before {
     content: '';
     position: absolute;
-    top: -40px; /* Extend slightly into the previous section */
+    top: 0;
     left: 0;
     width: 100%;
-    height: 80px; /* Increase gradient height for smoother transition */
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%, /* Transparent at the top */
-        rgba(0, 0, 0, 0.2) 30%, /* Subtle fade in the middle */
-        rgba(0, 0, 0, 0.4) 70%, /* Slightly darker at the bottom */
-        rgba(0, 0, 0, 0.6) 100% /* Smooth fade into the next section */
-    );
-    z-index: 2; /* Ensure it appears above the background image */
-    pointer-events: none; /* Doesn't interfere with user interactions */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: inherit; /* Inherit the same background image */
+    filter: blur(3px); /* Apply blur effect only to the pseudo-element */
+    z-index: -1; /* Ensure it is behind the content */
+    opacity: 1; /* Fully visible */
 }
 
-/* Posts Animation */
-.post {
-    opacity: 0;
-    transform: translateX(-100%); /* Start position for left sliding posts */
-    transition: opacity 0.8s ease, transform 0.8s ease;
+/* Welcome Section Content (Unblurred) */
+#welcome-section .content {
+    position: relative;
+    z-index: 2;
 }
 
-.post.slide-in-right {
-    transform: translateX(100%); /* Start position for right sliding posts */
+/* Mascot Animation */
+.mascot {
+    position: absolute;
+    top: -50px; /* Spaced further from the content box */
+    right: -50px; /* Spaced further to the right */
+    width: 120px; /* Adjust size as needed */
+    height: auto;
+    transform: rotate(-10deg); /* Slight diagonal rotation */
+    animation: bounce 3s infinite ease-in-out; /* Slow bounce effect */
 }
 
-.post.visible {
-    opacity: 1;
-    transform: translateX(0); /* Move to final position */
+/* Bounce Animation Keyframes */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-10deg); /* Start and end at default */
+    }
+    50% {
+        transform: translateY(-20px) rotate(-10deg); /* Bounce up */
+    }
 }
 
-/* Transparent Content Box */
+/* Post Content Animation */
 .content {
     position: relative;
     z-index: 2; /* Content stays above the background */
     background: rgba(17, 17, 17, 0.9); /* Transparent black background */
-    padding: 25px; /* Increased padding */
+    padding: 25px;
     border-radius: 10px;
-    max-width: 90%; /* Larger content width for readability */
+    max-width: 90%;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for content box */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    opacity: 0; /* Start hidden */
+    transform: translateX(-100%); /* Start off-screen */
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
-.content h1, .content h2 a {
-    color: #f2f2f2; /* Lighter text for better contrast */
+.content.slide-in-right {
+    transform: translateX(100%); /* Start from the right for alternating posts */
+}
+
+.content.visible {
+    opacity: 1;
+    transform: translateX(0); /* Slide into view */
+}
+
+.content.hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.content.slide-in-right.hidden {
+    transform: translateX(100%);
+}
+
+#welcome-section .content.visible {
+    opacity: 1;
+    transform: translateX(0); /* Ensure welcome stays fixed */
+}
+
+/* Remove purple text for visited links */
+a {
+    color: #fff; /* Default link color */
     text-decoration: none;
-    font-size: 1.5rem; /* Larger font size */
 }
 
-.content p {
-    color: #ccc;
-    margin-top: 15px;
-    font-size: 1.1rem; /* Slightly larger text */
+a:visited {
+    color: #fff; /* Override visited link color */
+}
+
+a:hover {
+    color: #c2b280; /* Highlight color on hover */
 }
 
 /* Responsive Adjustments for Mobile */
@@ -134,11 +341,11 @@ body {
     }
 
     .content h1, .content h2 a {
-        font-size: 1.8rem; /* Larger headings for mobile */
+        font-size: 1.5rem; /* Adjust headings for mobile */
     }
 
     .content p {
-        font-size: 1.2rem; /* Larger paragraph text for mobile */
+        font-size: 1rem; /* Adjust paragraph text for mobile */
     }
 
     #top-bar {
@@ -150,15 +357,43 @@ body {
     #menu-btn img {
         height: 30px; /* Scale down top bar icons */
     }
+    #sliding-menu .menu-content a {
+        font-size: 1rem; /* Smaller menu text for mobile */
+        margin: 5px 0; /* Adjust spacing for mobile */
+    }
+    #contact-us {
+        padding: 30px 10px; /* Reduce padding on mobile */
+    }
 
-    .connected-section::before {
-        height: 100px; /* Even taller gradient for mobile */
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0) 0%, /* Transparent at the top */
-            rgba(0, 0, 0, 0.1) 20%, /* Subtle fade */
-            rgba(0, 0, 0, 0.3) 60%, /* Darker in the middle */
-            rgba(0, 0, 0, 0.5) 100% /* Smooth fade into the next section */
-        );
+    .carousel {
+        height: 200px; /* Reduce carousel height on smaller screens */
+    }
+
+    .loop .card {
+        flex: 0 0 calc(50% - 20px); /* Make cards fit better on small screens */
+        padding: 8px;
+    }
+
+    .loop img {
+        width: 40px; /* Smaller image size on mobile */
+        height: 40px;
+    }
+
+    .loop h3 {
+        font-size: 0.9rem;
+    }
+
+    .loop p {
+        font-size: 0.7rem;
+    }
+    #footer {
+        flex-direction: column; /* Stack footer elements vertically */
+        align-items: flex-start; /* Align left */
+    }
+
+    .footer-center {
+        position: static; /* Reset to flow with the layout */
+        transform: none;
+        margin-top: 20px; /* Add spacing for mobile */
     }
 }

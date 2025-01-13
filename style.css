@@ -94,14 +94,21 @@ body {
     font-size: 1.1rem; /* Slightly larger text */
 }
 
+/* Image Responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Scroll Behavior */
 html {
     scroll-behavior: smooth; /* Smooth scrolling */
 }
 
+/* Responsive Adjustments for Mobile */
 @media (max-width: 768px) {
     .connected-section {
-        min-height: 80vh; /* Slightly taller sections for mobile */
+        min-height: 60vh; /* Smaller sections for mobile */
     }
 
     .content {
@@ -115,5 +122,24 @@ html {
 
     .content p {
         font-size: 1.2rem; /* Larger paragraph text for mobile */
+    }
+
+    #top-bar {
+        height: 50px; /* Reduce top bar height for mobile */
+        padding: 0 10px;
+    }
+
+    #logo img,
+    #menu-btn img {
+        height: 30px; /* Scale down top bar icons */
+    }
+
+    .connected-section::before {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%, /* Transparent at the top */
+            rgba(0, 0, 0, 0.3) 50%, /* Lighter gradient for mobile */
+            rgba(0, 0, 0, 0) 100%
+        );
     }
 }

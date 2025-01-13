@@ -10,10 +10,10 @@
     <!-- Top Bar -->
     <header id="top-bar">
         <div id="logo">
-            <img src="images/Logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
         </div>
         <div id="menu-btn">
-            <img src="images/Menu.png" alt="Menu">
+            <img src="images/menu.png" alt="Menu">
         </div>
     </header>
 
@@ -35,7 +35,7 @@
         <section id="welcome-section" class="connected-section" data-bg="images/welcomeBackground.jpg">
             <div class="content">
                 <h1>Halo siswa siswi SMAN 81</h1>
-                <p>Anak anak UGM ngapain aja sih di semester 1?</p>
+                <p>Anak-anak UGM ngapain aja sih di semester 1?</p>
                 <img src="images/mascot.png" alt="Mascot" class="mascot">
             </div>
         </section>
@@ -130,109 +130,62 @@
                 </div>
             </div>
         </section>
-                <!-- Footer Section -->
-                <footer id="footer">
-                    <div class="footer-left">
-                        <a href="#welcome-section">Home</a><br>
-                        <a href="https://ugm.ac.id/" target="_blank">UGM Official Website</a>
-                    </div>
-                    <div class="footer-center">
-                        <p>&copy; 2025 SMAN 81 UGM Alumni</p>
-                    </div>
-                </footer>        
     </main>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-left">
+            <a href="#welcome-section">Home</a>
+            <a href="https://ugm.ac.id/" target="_blank">UGM Official Website</a>
+        </div>
+        <div class="footer-center">
+            <p>&copy; 2025 SMAN 81 UGM Alumni</p>
+        </div>
+    </footer>
 
     <!-- JavaScript -->
     <script>
-        // Select all connected sections (posts)
+        // Intersection Observer to handle animations
         const sections = document.querySelectorAll('.connected-section');
-        const welcomeSection = document.querySelector('#welcome-section');
-
-        // Intersection Observer to handle animations and background images
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 const content = entry.target.querySelector('.content');
-                const bgImage = entry.target.getAttribute('data-bg');
-
                 if (entry.isIntersecting) {
-                    // Apply the background image from data-bg attribute
-                    if (bgImage) {
-                        entry.target.style.backgroundImage = `url(${bgImage})`;
-                    }
-
-                    // Trigger slide-in animation
                     content.classList.add('visible');
                     content.classList.remove('hidden');
-                } else if (entry.target !== welcomeSection) {
-                    // Slide-out animation for all sections except welcome
-                    content.classList.add('hidden');
+                } else {
                     content.classList.remove('visible');
+                    content.classList.add('hidden');
                 }
             });
-        }, {
-            threshold: 0.5 // Trigger when 50% of the element is visible
-        });
+        }, { threshold: 0.5 });
 
-        // Observe each section
-        sections.forEach((section) => observer.observe(section));
+        sections.forEach(section => observer.observe(section));
 
-        // Apply background to the first section immediately
-        if (welcomeSection) {
-            const bgImage = welcomeSection.getAttribute('data-bg');
-            if (bgImage) {
-                welcomeSection.style.backgroundImage = `url(${bgImage})`;
-            }
+        // Contact Us Carousel Animation
+        const topLoop = document.querySelector('.top-loop');
+        const bottomLoop = document.querySelector('.bottom-loop');
+
+        topLoop.innerHTML += topLoop.innerHTML;
+        bottomLoop.innerHTML += bottomLoop.innerHTML;
+
+        let topScroll = 0;
+        let bottomScroll = 0;
+
+        function animateLoops() {
+            topScroll += 1;
+            bottomScroll -= 1;
+
+            topLoop.style.transform = `translateX(-${topScroll}px)`;
+            bottomLoop.style.transform = `translateX(${bottomScroll}px)`;
+
+            if (topScroll >= topLoop.scrollWidth / 2) topScroll = 0;
+            if (Math.abs(bottomScroll) >= bottomLoop.scrollWidth / 2) bottomScroll = 0;
+
+            requestAnimationFrame(animateLoops);
         }
 
-        // Menu toggle logic
-        const menuBtn = document.getElementById('menu-btn');
-        const slidingMenu = document.getElementById('sliding-menu');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-
-        // Open menu
-        menuBtn.addEventListener('click', () => {
-            slidingMenu.classList.add('active');
-        });
-
-        // Close menu
-        closeMenuBtn.addEventListener('click', () => {
-            slidingMenu.classList.remove('active');
-        });
-
-        // Close menu when clicking outside
-        window.addEventListener('click', (e) => {
-            if (!slidingMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                slidingMenu.classList.remove('active');
-            }
-        });
-
-        // Animate Contact Us Carousel
-        document.addEventListener('DOMContentLoaded', () => {
-            const topLoop = document.querySelector('.top-loop');
-            const bottomLoop = document.querySelector('.bottom-loop');
-
-            // Duplicate cards for seamless scrolling
-            topLoop.innerHTML += topLoop.innerHTML;
-            bottomLoop.innerHTML += bottomLoop.innerHTML;
-
-            let topScroll = 0;
-            let bottomScroll = 0;
-
-            function animateLoops() {
-                topScroll += 1;
-                bottomScroll -= 1;
-
-                topLoop.style.transform = `translateX(-${topScroll}px)`;
-                bottomLoop.style.transform = `translateX(${bottomScroll}px)`;
-
-                if (topScroll >= topLoop.scrollWidth / 2) topScroll = 0;
-                if (Math.abs(bottomScroll) >= bottomLoop.scrollWidth / 2) bottomScroll = 0;
-
-                requestAnimationFrame(animateLoops);
-            }
-
-            animateLoops();
-        });
+        animateLoops();
     </script>
 </body>
 </html>

@@ -22,45 +22,30 @@ body {
     background-color: #c2b280; /* Initial solid color */
     box-shadow: none; /* No shadow initially */
     transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for color and shadow */
-    overflow: hidden; /* Ensure pseudo-element stays inside */
 }
 
-/* Gradient Shadow */
+/* Gradient Shadow for Top Bar */
 #top-bar::after {
     content: '';
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    height: 10px; /* Height of the shadow */
+    height: 30px; /* Taller gradient for smoother transition */
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.2) 0%, /* Darkest at the top */
-        rgba(0, 0, 0, 0) 100% /* Transparent at the bottom */
+        rgba(0, 0, 0, 0.1) 0%, /* Lighter fade at the bottom */
+        rgba(0, 0, 0, 0.3) 50%, /* Mid fade */
+        rgba(0, 0, 0, 0.5) 100% /* Darker at the top */
     );
     opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth transition */
-    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-/* Apply Gradient Shadow on Scroll */
 #top-bar.scrolled {
     background-color: rgba(0, 0, 0, 0.1); /* Transparent background */
-    box-shadow: none; /* Disable box-shadow since we're using the gradient */
-}
-
-#top-bar.scrolled::after {
-    opacity: 1; /* Show the gradient shadow */
-}
-
-/* Top Bar Logo and Menu */
-#logo img,
-#menu-btn img {
-    height: 40px;
-}
-
-#menu-btn img {
-    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 /* Connected Sections */
@@ -75,36 +60,54 @@ body {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    overflow: hidden; /* Prevent pseudo-elements from overflowing */
 }
 
-/* Gradient Overlay for Blending Effect */
+/* Gradient Overlay at Section Edges */
 .connected-section::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -40px; /* Extend slightly into the previous section */
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 80px; /* Increase gradient height for smoother transition */
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 0%, /* Transparent at the top */
-        rgba(0, 0, 0, 0.5) 50%, /* Gradual darkening in the middle */
-        rgba(0, 0, 0, 0) 100% /* Transparent at the bottom */
+        rgba(0, 0, 0, 0.2) 30%, /* Subtle fade in the middle */
+        rgba(0, 0, 0, 0.4) 70%, /* Slightly darker at the bottom */
+        rgba(0, 0, 0, 0.6) 100% /* Smooth fade into the next section */
     );
-    z-index: 1; /* Ensure it sits above the background */
-    pointer-events: none; /* Allows interaction with content */
+    z-index: 2; /* Ensure it appears above the background image */
+    pointer-events: none; /* Doesn't interfere with user interactions */
+}
+
+/* Posts Animation */
+.post {
+    opacity: 0;
+    transform: translateX(-100%); /* Start position for left sliding posts */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.post.slide-in-right {
+    transform: translateX(100%); /* Start position for right sliding posts */
+}
+
+.post.visible {
+    opacity: 1;
+    transform: translateX(0); /* Move to final position */
 }
 
 /* Transparent Content Box */
 .content {
     position: relative;
-    z-index: 2; /* Sits above the gradient overlay */
+    z-index: 2; /* Content stays above the background */
     background: rgba(17, 17, 17, 0.9); /* Transparent black background */
     padding: 25px; /* Increased padding */
     border-radius: 10px;
     max-width: 90%; /* Larger content width for readability */
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* More prominent shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for content box */
 }
 
 .content h1, .content h2 a {
@@ -119,17 +122,6 @@ body {
     font-size: 1.1rem; /* Slightly larger text */
 }
 
-/* Image Responsiveness */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Scroll Behavior */
-html {
-    scroll-behavior: smooth; /* Smooth scrolling */
-}
-
 /* Responsive Adjustments for Mobile */
 @media (max-width: 768px) {
     .connected-section {
@@ -142,7 +134,7 @@ html {
     }
 
     .content h1, .content h2 a {
-        font-size: 1.8rem; /* Even larger text for mobile readability */
+        font-size: 1.8rem; /* Larger headings for mobile */
     }
 
     .content p {
@@ -160,11 +152,13 @@ html {
     }
 
     .connected-section::before {
+        height: 100px; /* Even taller gradient for mobile */
         background: linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0) 0%, /* Transparent at the top */
-            rgba(0, 0, 0, 0.3) 50%, /* Lighter gradient for mobile */
-            rgba(0, 0, 0, 0) 100%
+            rgba(0, 0, 0, 0.1) 20%, /* Subtle fade */
+            rgba(0, 0, 0, 0.3) 60%, /* Darker in the middle */
+            rgba(0, 0, 0, 0.5) 100% /* Smooth fade into the next section */
         );
     }
 }

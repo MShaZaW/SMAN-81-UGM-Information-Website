@@ -175,38 +175,51 @@
         /* Mobile Styles */
         @media (max-width: 768px) {
             main {
-            display: grid; /* Use grid layout for precise control */
+            display: grid; /* Use grid for layout control */
             grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-            gap: 10px; /* Space between rows and columns */
+            gap: 15px; /* Space between rows and columns */
+            justify-content: center; /* Center grid for symmetry */
         }
 
         .contact-card {
-            width: 100%; /* Cards will automatically fit the grid column */
-            padding: 10px; /* Compact padding for smaller devices */
-            font-size: 0.7rem; /* Reduce font size for mobile readability */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%; /* Cards fit the grid column */
+            padding: 10px; /* Compact padding */
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
         }
 
         .contact-card img {
-            width: 80px; /* Adjust image size to fit smaller cards */
-            height: 80px;
+            width: 70px; /* Smaller image size */
+            height: 70px;
             margin-right: 10px; /* Space between image and text */
         }
 
         .contact-card div {
-            text-align: left; /* Keep text aligned to the left */
+            text-align: left; /* Text aligns to the left */
         }
 
         .contact-card h3 {
-            font-size: 1rem; /* Smaller header font size */
+            font-size: 0.9rem; /* Adjusted header font */
         }
 
         .contact-card p {
-            font-size: 0.7rem; /* Compact paragraph font size */
-            margin: 3px 0; /* Tighten spacing between lines */
+            font-size: 0.8rem; /* Adjusted paragraph font */
+            margin: 3px 0;
         }
 
         .contact-card a {
-            font-size: 0.7rem; /* Adjust link size */
+            font-size: 0.8rem; /* Adjusted link font */
+        }
+
+        /* Center the last odd card */
+        .contact-card:last-child {
+            grid-column: span 2; /* Last card spans the full row */
+            justify-content: center;
+            text-align: center;
         }
         }
     </style>

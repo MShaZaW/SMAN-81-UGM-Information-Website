@@ -71,7 +71,7 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 300px; /* Reduced height to ensure fit */
+    height: 400px; /* Reduced height to ensure fit */
 }
 
 /* Loops */
@@ -85,8 +85,8 @@ body {
 .loop .card {
     background: rgba(255, 255, 255, 0.3); /* Slight transparency */
     border-radius: 8px;
-    padding: 8px; /* Smaller padding inside cards */
-    margin: 10px; /* Reduced spacing between cards */
+    padding: 5px; /* Smaller padding inside cards */
+    margin: 5px; /* Reduced spacing between cards */
     text-align: center;
     flex: 0 0 calc(40% - 20px); /* Smaller cards */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -98,11 +98,11 @@ body {
 }
 
 .loop img {
-    width: 40px; /* Smaller image size */
-    height: 40px;
-    border-radius: 50%;
+    width: 50px; /* Smaller image size */
+    height: 50px;
+    border-radius: 20%;
     object-fit: cover;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .loop h3 {
@@ -122,6 +122,16 @@ body {
 
 .bottom-loop {
     margin-top: 20px;
+}
+
+.top-loop div, .bottom-loop div {
+    flex-shrink: 0;
+    width: 150px; /* Adjust based on your content size */
+    text-align: center;
+    padding: 10px;
+    background: lightblue; /* Example color */
+    margin: 5px;
+    border: 1px solid #ccc;
 }
 
 /* Top Bar */

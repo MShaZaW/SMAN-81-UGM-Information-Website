@@ -175,33 +175,37 @@
         /* Mobile Styles */
         @media (max-width: 768px) {
             main {
-            flex-wrap: wrap; /* Ensure wrapping for smaller screens */
+            flex-wrap: wrap; /* Enable wrapping for contact cards */
+            gap: 10px; /* Reduce the gap between cards */
         }
 
         .contact-card {
-            width: 45%; /* Maintain two contacts per row */
-            padding: 10px; /* Reduce padding for smaller screens */
+            width: 48%; /* Ensure two cards fit side-by-side */
+            padding: 8px; /* Minimize padding for compact layout */
+            font-size: 0.8rem; /* Scale down text globally */
         }
 
         .contact-card img {
-            width: 100px; /* Smaller image size for mobile */
-            height: 100px;
+            width: 80px; /* Smaller profile image */
+            height: 80px;
+            margin-right: 10px; /* Smaller gap between image and text */
         }
 
         .contact-card div {
-            text-align: center; /* Center-align text for better readability */
+            text-align: left; /* Keep text alignment consistent */
         }
 
         .contact-card h3 {
-            font-size: 1.2rem; /* Adjust font size for mobile */
+            font-size: 1rem; /* Smaller header font */
         }
 
         .contact-card p {
-            font-size: 0.9rem; /* Adjust text size */
+            font-size: 0.8rem; /* Compact paragraph font size */
+            margin: 3px 0; /* Reduce spacing between lines */
         }
 
         .contact-card a {
-            font-size: 0.9rem; /* Adjust link size */
+            font-size: 0.8rem; /* Smaller font size for links */
         }
         }
     </style>

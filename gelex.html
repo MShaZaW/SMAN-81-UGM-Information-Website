@@ -3,36 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gelex - UKM dan Organisasi di UGM</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pionir UGM</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        #top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #c2b280;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 1000;
+        }
+
+        #menu-btn {
+            margin-right: 20px; /* Scoot the menu button slightly to the left */
+            margin-left: 30px; /* Fine-tune its position from the left edge */
+        }
+
+        #logo img,
+        #menu-btn img {
+            height: 40px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+        }
+
+        /* Sliding Menu */
+        #sliding-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: transform 0.3s ease, opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #sliding-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        #sliding-menu .menu-content {
+            text-align: center;
+        }
+
+        #sliding-menu .menu-content a {
+            display: block;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        #sliding-menu .menu-content a:hover {
+            color: #c2b280;
+        }
+
+        /* Close Menu Button */
+        #close-menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1200;
+            transition: color 0.3s ease;
+        }
+
+        #close-menu-btn:hover {
+            color: #c2b280;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        /* Event Section */
+        .event-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-section img {
+            width: 30%;
+            max-width: 300px;
+            margin-right: 20px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .event-section.description-right {
+            flex-direction: row-reverse;
+        }
+
+        .event-section.description-right img {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            margin-top: 40px;
+            padding: 20px 0;
+            background: #c2b280;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            width: 70%;
+            height: 400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            will-change: transform;
+        }
+
+        .carousel-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 10px;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1500;
+        }
+
+        .carousel-buttons button {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-buttons button:hover {
+            background: rgba(0, 0, 0, 1);
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1>All You Need To Know About UGM</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Top Bar -->
+    <header id="top-bar">
+        <div id="logo">
+            <img src="images/Logo.png" alt="Logo">
+        </div>
+        <div id="menu-btn">
+            <img src="images/Menu.png" alt="Menu">
+        </div>
     </header>
 
-    <!-- Main Content Section -->
-    <main>
-        <section>
-            <article>
-                <h2>Gelex</h2>
-                <p>Apa saja sih UKM, organisasi, dan komunitas di dalam UGM?!</p>
-                <p>UGM memiliki banyak UKM (Unit Kegiatan Mahasiswa), organisasi, dan komunitas yang sangat beragam. Di antaranya adalah UKM olahraga, seni, sosial, dan budaya. Mahasiswa dapat bergabung dalam organisasi-organisasi ini untuk mengembangkan diri, berkontribusi pada kampus, dan memperluas jaringan sosial.</p>
-                <p>UKM dan komunitas di UGM juga sering mengadakan berbagai acara dan kegiatan untuk meningkatkan minat dan bakat mahasiswa, serta sebagai bentuk pengabdian masyarakat.</p>
-            </article>
-        </section>
+    <!-- Sliding Menu -->
+    <div id="sliding-menu">
+        <button id="close-menu-btn">&times;</button>
+        <div class="menu-content">
+            <a href="index.html">HOME</a>
+            <a href="pionir.html">PIONIR</a>
+            <a href="gelex.html">GELEX</a>
+            <a href="porsenigama.html">PORSENIGAMA</a>
+            <a href="places.html">PLACES TO VISIT</a>
+            <a href="contacts.html">CONTACT US</a>
+        </div>
+    </div>
 
-        <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2025 UGM SMAN 81 Alumni</p>
-        </footer>
+    <!-- Main Content -->
+    <main>
+        <!-- Event Section -->
+        <div class="event-section">
+            <img src="images/gelex/gelex1.jpeg" alt="Pionir Event">
+            <div>
+                <h2>About Gelex</h2>
+                <p>Gelanggang Expo atau GELEX adalah kegiatan rutin tahunan yang bertujuan untuk memperkenalkan Unit Kegiatan Mahasiswa (UKM) dan komunitas di Universitas Gadjah Mada. Selain memperkenalkan melalui pertunjukan dari masing-masing UKM, terdapat juga stand UKM yang menyediakan informasi mengenai UKM serta open recruitment.</p>
+            </div>
+        </div>
+
+        <div class="event-section description-right">
+            <div>
+                <h2>Tujuan Gelex</h2>
+                <p>Gelanggang Expo UGM merupakan acara tahunan yang diadakan untuk memperkenalkan UKM dan komunitas yang ada di UGM kepada para mahasiswa, khususnya mahasiswa baru. Selama tiga hari, Sobat Gelex dapat menjelajahi seluruh stan UKM dan komunitas serta mengulik lebih dalam mengenai UKM yang ada.</p>
+            </div>
+        </div>
+
+        <!-- Carousel Section -->
+        <div class="carousel-section">
+            <div class="carousel-buttons">
+                <button class="prev" id="prev">&lt;</button>
+                <button class="next" id="next">&gt;</button>
+            </div>
+            <div class="carousel-container" id="carousel-container">
+                <img src="images/gelex/highlight1.jpeg" alt="Highlight 1">
+                <img src="images/gelex/highlight2.jpeg" alt="Highlight 2">
+                <img src="images/gelex/highlight3.jpeg" alt="Highlight 3">
+                <img src="images/gelex/highlight4.jpeg" alt="Highlight 4">
+                <img src="images/gelex/highlight5.jpeg" alt="Highlight 5">
+                <img src="images/gelex/highlight6.jpeg" alt="Highlight 6">
+                <img src="images/gelex/highlight7.jpeg" alt="Highlight 7">
+                <img src="images/gelex/highlight8.jpeg" alt="Highlight 8">
+            </div>
+        </div>
     </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Button Logic
+const menuBtn = document.getElementById("menu-btn");
+const slidingMenu = document.getElementById("sliding-menu");
+const closeMenuBtn = document.getElementById("close-menu-btn");
+const carousel = document.getElementById("carousel-container");
+const nextButton = document.getElementById("next");
+const prevButton = document.getElementById("prev");
+let currentIndex = 0;
+let autoScroll;
+
+// Function to dynamically calculate the image width
+const updateImageWidth = () => {
+    return carousel.firstElementChild.offsetWidth; // Dynamically calculate width of the first image
+};
+
+// Function to move the carousel
+const moveCarousel = () => {
+    const imageWidth = updateImageWidth(); // Dynamically calculate the width of the images
+    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+    carousel.style.transition = "transform 0.8s ease-in-out"; // Smooth transition
+};
+
+// Start auto-scrolling the carousel
+const startAutoScroll = () => {
+    autoScroll = setInterval(() => {
+        nextButton.click();
+    }, 5000); // 5-second interval for auto-scroll
+};
+
+// Stop auto-scrolling the carousel
+const stopAutoScroll = () => {
+    clearInterval(autoScroll);
+};
+
+// Next button functionality
+nextButton.addEventListener("click", () => {
+    stopAutoScroll();
+    currentIndex = (currentIndex + 1) % carousel.children.length; // Loop back to the first image
+    moveCarousel();
+    startAutoScroll();
+});
+
+// Previous button functionality
+prevButton.addEventListener("click", () => {
+    stopAutoScroll();
+    currentIndex = (currentIndex - 1 + carousel.children.length) % carousel.children.length; // Loop to the last image
+    moveCarousel();
+    startAutoScroll();
+});
+
+// Sliding menu functionality
+menuBtn.addEventListener("click", () => slidingMenu.classList.add("active"));
+closeMenuBtn.addEventListener("click", () => slidingMenu.classList.remove("active"));
+
+window.addEventListener("click", (e) => {
+    if (!slidingMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        slidingMenu.classList.remove("active");
+    }
+});
+
+// Stop auto-scroll when hovering over the carousel
+carousel.addEventListener("mouseover", stopAutoScroll);
+
+// Resume auto-scroll when not hovering over the carousel
+carousel.addEventListener("mouseout", startAutoScroll);
+
+// Recalculate the carousel position on window resize
+window.addEventListener("resize", () => {
+    moveCarousel(); // Re-align the carousel to ensure smooth behavior
+});
+
+// Start the auto-scroll when the page loads
+startAutoScroll();
+    </script>
 </body>
 </html>

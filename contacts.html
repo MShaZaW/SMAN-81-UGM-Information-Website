@@ -174,21 +174,15 @@
 
         /* Mobile Styles */
         @media (max-width: 768px) {
-            main {
-                flex-direction: column;
-                align-items: center;
+            .contact-card {
+                width: 45%; /* Maintain two people per row on mobile */
             }
 
-            .contact-card {
-                width: 90%;
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
+            .contact-card:last-child {
+                width: 90%; /* Center the last odd contact on mobile */
             }
 
             .contact-card img {
-                margin-right: 0;
-                margin-bottom: 15px;
                 width: 120px;
                 height: 120px;
             }
@@ -263,6 +257,15 @@
                 <p>Faculty: Business</p>
                 <p>Major: Marketing</p>
                 <p><a href="https://linkedin.com/in/delviananamira" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person5.jpg" alt="Person 5">
+            <div>
+                <h3>Azka Ghaits</h3>
+                <p>Faculty: Medicine</p>
+                <p>Major: Surgery</p>
+                <p><a href="https://linkedin.com/in/azkaghaits" target="_blank">LinkedIn</a></p>
             </div>
         </div>
     </main>

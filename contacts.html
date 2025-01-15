@@ -176,36 +176,44 @@
         @media (max-width: 768px) {
             main {
             flex-wrap: wrap; /* Enable wrapping for contact cards */
-            gap: 10px; /* Reduce the gap between cards */
+            gap: 8px; /* Minimize gap between cards */
         }
 
         .contact-card {
-            width: 48%; /* Ensure two cards fit side-by-side */
-            padding: 8px; /* Minimize padding for compact layout */
-            font-size: 0.8rem; /* Scale down text globally */
+            width: 48%; /* Slightly smaller width for better fit */
+            padding: 12px; /* Reduce padding for compactness */
+            font-size: 0.7rem; /* Scale down font size for mobile */
+            max-width: 100%; /* Ensure cards are responsive */
+        }
+
+        .contact-card:last-child {
+            width: 80%; /* Center the last odd contact card */
+            margin: 0 auto; /* Center alignment */
+            justify-content: center;
         }
 
         .contact-card img {
-            width: 80px; /* Smaller profile image */
-            height: 80px;
-            margin-right: 10px; /* Smaller gap between image and text */
+            width: 70px; /* Smaller profile image */
+            height: 70px;
+            margin-right: 10px; /* Adjust spacing between image and text */
         }
 
         .contact-card div {
-            text-align: left; /* Keep text alignment consistent */
+            text-align: left; /* Keep text aligned to the left */
         }
 
         .contact-card h3 {
-            font-size: 1rem; /* Smaller header font */
+            font-size: 1rem; /* Smaller header font size */
+            margin-bottom: 5px; /* Reduce spacing below header */
         }
 
         .contact-card p {
-            font-size: 0.8rem; /* Compact paragraph font size */
+            font-size: 0.7rem; /* Compact paragraph text */
             margin: 3px 0; /* Reduce spacing between lines */
         }
 
         .contact-card a {
-            font-size: 0.8rem; /* Smaller font size for links */
+            font-size: 0.7rem; /* Adjust link text size */
         }
         }
     </style>

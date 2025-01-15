@@ -175,27 +175,21 @@
         /* Mobile Styles */
         @media (max-width: 768px) {
             main {
-            flex-wrap: wrap; /* Enable wrapping for contact cards */
-            gap: 8px; /* Minimize gap between cards */
+            display: grid; /* Use grid layout for precise control */
+            grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+            gap: 10px; /* Space between rows and columns */
         }
 
         .contact-card {
-            width: 48%; /* Slightly smaller width for better fit */
-            padding: 12px; /* Reduce padding for compactness */
-            font-size: 0.7rem; /* Scale down font size for mobile */
-            max-width: 100%; /* Ensure cards are responsive */
-        }
-
-        .contact-card:last-child {
-            width: 80%; /* Center the last odd contact card */
-            margin: 0 auto; /* Center alignment */
-            justify-content: center;
+            width: 100%; /* Cards will automatically fit the grid column */
+            padding: 10px; /* Compact padding for smaller devices */
+            font-size: 0.7rem; /* Reduce font size for mobile readability */
         }
 
         .contact-card img {
-            width: 70px; /* Smaller profile image */
-            height: 70px;
-            margin-right: 10px; /* Adjust spacing between image and text */
+            width: 80px; /* Adjust image size to fit smaller cards */
+            height: 80px;
+            margin-right: 10px; /* Space between image and text */
         }
 
         .contact-card div {
@@ -204,16 +198,15 @@
 
         .contact-card h3 {
             font-size: 1rem; /* Smaller header font size */
-            margin-bottom: 5px; /* Reduce spacing below header */
         }
 
         .contact-card p {
-            font-size: 0.7rem; /* Compact paragraph text */
-            margin: 3px 0; /* Reduce spacing between lines */
+            font-size: 0.7rem; /* Compact paragraph font size */
+            margin: 3px 0; /* Tighten spacing between lines */
         }
 
         .contact-card a {
-            font-size: 0.7rem; /* Adjust link text size */
+            font-size: 0.7rem; /* Adjust link size */
         }
         }
     </style>

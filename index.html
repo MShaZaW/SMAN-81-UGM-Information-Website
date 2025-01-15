@@ -84,34 +84,34 @@
                 <div class="loop top-loop">
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person1.jpg" alt="Person 1">
+                            <img src="images/Contacts/naila.jpeg" alt="Person 1">
                             <h3>Naila Anissa</h3>
-                            <p>Faculty: Science</p>
-                            <p>Major: Physics</p>
+                            <p>Faculty: Sekolah Vokasi</p>
+                            <p>Major: Perbankan</p>
                         </a>
                     </div>
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person2.jpg" alt="Person 2">
+                            <img src="images/Contacts/ara.jpeg" alt="Person 2">
                             <h3>Ana Chadizahra</h3>
-                            <p>Faculty: Engineering</p>
-                            <p>Major: Mechanical</p>
+                            <p>Faculty: Teknik</p>
+                            <p>Major: Teknik Kimia</p>
                         </a>
                     </div>
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person3.jpg" alt="Person 3">
+                            <img src="images/Contacts/thesa.jpeg" alt="Person 3">
                             <h3>Theresia Anggraini</h3>
-                            <p>Faculty: Arts</p>
-                            <p>Major: Literature</p>
+                            <p>Faculty: Sekolah Vokasi</p>
+                            <p>Major: Perbankan</p>
                         </a>
                     </div>
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person4.jpg" alt="Person 4">
+                            <img src="images/Contacts/vivi.jpeg" alt="Person 4">
                             <h3>Delviana Namira</h3>
                             <p>Faculty: Business</p>
-                            <p>Major: Marketing</p>
+                            <p>Major: Elektronika dan Instrumentasi</p>
                         </a>
                     </div>
                 </div>
@@ -120,26 +120,26 @@
                 <div class="loop bottom-loop">
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person5.jpg" alt="Person 5">
+                            <img src="images/Contacts/azka.jpeg" alt="Person 5">
                             <h3>Azka Ghaits</h3>
-                            <p>Faculty: Medicine</p>
-                            <p>Major: Surgery</p>
+                            <p>Faculty: Teknik</p>
+                            <p>Major: Teknik Elektro</p>
                         </a>
                     </div>
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person6.jpg" alt="Person 6">
+                            <img src="images/Contacts/ahsan.jpeg" alt="Person 6">
                             <h3>Ahsan Wiryawan</h3>
-                            <p>Faculty: Law</p>
-                            <p>Major: Criminal Law</p>
+                            <p>Faculty: MIPA</p>
+                            <p>Major: Ilmu Komputer</p>
                         </a>
                     </div>
                     <div class="card">
                         <a href="contacts.html">
-                            <img src="images/person7.jpg" alt="Person 7">
+                            <img src="images/Contacts/arfa.jpeg" alt="Person 7">
                             <h3>Arfa Fadilah</h3>
-                            <p>Faculty: Education</p>
-                            <p>Major: Early Childhood</p>
+                            <p>Faculty: Teknik</p>
+                            <p>Major: Teknik Kimia</p>
                         </a>
                     </div>
                 </div>
@@ -224,31 +224,56 @@
 
         // Animate Contact Us Carousel
         document.addEventListener('DOMContentLoaded', () => {
-            const topLoop = document.querySelector('.top-loop');
-            const bottomLoop = document.querySelector('.bottom-loop');
+        const topLoop = document.querySelector('.top-loop');
+        const bottomLoop = document.querySelector('.bottom-loop');
 
-            // Duplicate cards for seamless scrolling
-            topLoop.innerHTML += topLoop.innerHTML;
-            bottomLoop.innerHTML += bottomLoop.innerHTML;
+        // Duplicate content twice for seamless scrolling
+        topLoop.innerHTML += topLoop.innerHTML; // Duplicate content for top-loop
+        const originalBottomContent = bottomLoop.innerHTML;
+        bottomLoop.innerHTML = originalBottomContent + originalBottomContent + originalBottomContent; // Add two duplicates at the start
+        bottomLoop.innerHTML = bottomLoop.innerHTML + originalBottomContent; // Add one duplicate at the end for better coverage
 
-            let topScroll = 0;
-            let bottomScroll = 0;
+        const topSpeed = 1; // Speed of the top loop
+        const bottomSpeed = 1; // Speed of the bottom loop (can be different)
+        let topScroll = 0;
+        let bottomScroll = bottomLoop.scrollWidth / 3; // Start scrolling from the middle due to left duplicates
 
-            function animateLoops() {
-                topScroll += 1;
-                bottomScroll -= 1;
+        const topLoopWidth = topLoop.scrollWidth / 2; // Half of the total scrollable width
+        const bottomLoopWidth = bottomLoop.scrollWidth / 3; // One-third of the total scrollable width (considering duplicates)
 
-                topLoop.style.transform = `translateX(-${topScroll}px)`;
-                bottomLoop.style.transform = `translateX(${bottomScroll}px)`;
+        function animateTopLoop() {
+            topScroll += topSpeed;
 
-                if (topScroll >= topLoop.scrollWidth / 2) topScroll = 0;
-                if (Math.abs(bottomScroll) >= bottomLoop.scrollWidth / 2) bottomScroll = 0;
+            // Apply transformation
+            topLoop.style.transform = `translateX(-${topScroll}px)`;
 
-                requestAnimationFrame(animateLoops);
+            // Reset if scroll reaches halfway
+            if (topScroll >= topLoopWidth) {
+                topScroll = 0; // Reset seamlessly
             }
 
-            animateLoops();
-        });
+            requestAnimationFrame(animateTopLoop);
+        }
+
+        function animateBottomLoop() {
+            bottomScroll += bottomSpeed;
+
+            // Apply transformation
+            bottomLoop.style.transform = `translateX(-${bottomScroll}px)`; // Move left due to prepended duplicates
+
+            // Reset if scroll reaches one-third
+            if (bottomScroll >= bottomLoopWidth * 2) {
+                bottomScroll = bottomLoopWidth; // Reset to start position after prepended duplicates
+            }
+
+            requestAnimationFrame(animateBottomLoop);
+        }
+
+        // Start animations independently
+        animateTopLoop();
+        animateBottomLoop();
+    });
+
     </script>
 </body>
 </html>

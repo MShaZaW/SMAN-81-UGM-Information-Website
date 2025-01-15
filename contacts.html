@@ -174,26 +174,35 @@
 
         /* Mobile Styles */
         @media (max-width: 768px) {
-            .contact-card {
-                width: 45%; /* Maintain two people per row on mobile */
-            }
+            main {
+            flex-wrap: wrap; /* Ensure wrapping for smaller screens */
+        }
 
-            .contact-card:last-child {
-                width: 90%; /* Center the last odd contact on mobile */
-            }
+        .contact-card {
+            width: 45%; /* Maintain two contacts per row */
+            padding: 10px; /* Reduce padding for smaller screens */
+        }
 
-            .contact-card img {
-                width: 120px;
-                height: 120px;
-            }
+        .contact-card img {
+            width: 100px; /* Smaller image size for mobile */
+            height: 100px;
+        }
 
-            .contact-card h3 {
-                font-size: 1.5rem;
-            }
+        .contact-card div {
+            text-align: center; /* Center-align text for better readability */
+        }
 
-            .contact-card a {
-                font-size: 1rem;
-            }
+        .contact-card h3 {
+            font-size: 1.2rem; /* Adjust font size for mobile */
+        }
+
+        .contact-card p {
+            font-size: 0.9rem; /* Adjust text size */
+        }
+
+        .contact-card a {
+            font-size: 0.9rem; /* Adjust link size */
+        }
         }
     </style>
 </head>

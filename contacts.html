@@ -4,32 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('images/welcomeBackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1;
+        }
+
+        /* Top Bar */
+        #top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #c2b280;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        #menu-btn {
+            margin-right: 20px; /* Scoot the menu button slightly to the left */
+            margin-left: 30px; /* Fine-tune its position from the left edge */
+        }
+
+        #logo img,
+        #menu-btn img {
+            height: 40px; /* Restrict the height */
+            width: auto; /* Maintain aspect ratio */
+            max-width: 150px; /* Optional: restrict max width if the image is too wide */
+            object-fit: contain; /* Ensure the image is not distorted */
+        }
+
+        /* Sliding Menu */
+        #sliding-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px); /* Shift the menu slightly to the left */
+            transition: transform 0.3s ease, opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #sliding-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0); /* Reset shift when active */
+        }
+
+        #sliding-menu .menu-content {
+            text-align: center;
+        }
+
+        #sliding-menu .menu-content a {
+            display: block;
+            font-size: 1.2rem; /* Menu text size */
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0; /* Space between menu items */
+            transition: color 0.3s ease;
+        }
+
+        #sliding-menu .menu-content a:hover {
+            color: #c2b280; /* Highlight color on hover */
+        }
+
+        /* Close Menu Button */
+        #close-menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem; /* Smaller button */
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1200; /* Ensure the button is above everything */
+            transition: color 0.3s ease;
+        }
+
+        #close-menu-btn:hover {
+            color: #c2b280; /* Change color on hover */
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 2;
+            padding: 80px 20px; /* Avoid being covered by top bar */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .contact-card {
+            width: 45%;
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .contact-card:last-child {
+            width: 100%; /* Center the last odd contact */
+            justify-content: center;
+        }
+
+        .contact-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .contact-card div {
+            flex: 1;
+            text-align: left;
+        }
+
+        .contact-card h3 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .contact-card p {
+            margin: 5px 0;
+        }
+
+        .contact-card a {
+            color: #c2b280;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .contact-card a:hover {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1>Contact Us</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Top Bar -->
+    <header id="top-bar">
+        <div id="logo">
+            <img src="images/Logo.png" alt="Logo">
+        </div>
+        <div id="menu-btn">
+            <img src="images/Menu.png" alt="Menu">
+        </div>
     </header>
 
-    <!-- Main Content Section -->
+    <!-- Sliding Menu -->
+    <div id="sliding-menu">
+        <button id="close-menu-btn">&times;</button>
+        <div class="menu-content">
+            <a href="index.html">HOME</a>
+            <a href="pionir.html">PIONIR</a>
+            <a href="gelex.html">GELEX</a>
+            <a href="porsenigama.html">PORSENIGAMA</a>
+            <a href="places.html">PLACES TO VISIT</a>
+            <a href="contacts.html">CONTACT US</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <main>
-        <section>
-            <h2>Get in Touch</h2>
-            <p>If you have any questions or want to learn more about UGM, feel free to contact us.</p>
+        <div class="contact-card">
+            <img src="images/person1.jpg" alt="Person 1">
+            <div>
+                <h3>Naila Anissa</h3>
+                <p>Faculty: Science</p>
+                <p>Major: Physics</p>
+                <p><a href="https://linkedin.com/in/nailaanissa" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person2.jpg" alt="Person 2">
+            <div>
+                <h3>Ana Chadizahra</h3>
+                <p>Faculty: Engineering</p>
+                <p>Major: Mechanical</p>
+                <p><a href="https://linkedin.com/in/anachadizahra" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person3.jpg" alt="Person 3">
+            <div>
+                <h3>Theresia Anggraini</h3>
+                <p>Faculty: Arts</p>
+                <p>Major: Literature</p>
+                <p><a href="https://linkedin.com/in/theresiaanggraini" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person4.jpg" alt="Person 4">
+            <div>
+                <h3>Delviana Namira</h3>
+                <p>Faculty: Business</p>
+                <p>Major: Marketing</p>
+                <p><a href="https://linkedin.com/in/delviananamira" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person5.jpg" alt="Person 5">
+            <div>
+                <h3>Azka Ghaits</h3>
+                <p>Faculty: Medicine</p>
+                <p>Major: Surgery</p>
+                <p><a href="https://linkedin.com/in/azkaghaits" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person6.jpg" alt="Person 6">
+            <div>
+                <h3>Ahsan Wiryawan</h3>
+                <p>Faculty: Law</p>
+                <p>Major: Criminal Law</p>
+                <p><a href="https://linkedin.com/in/ahsanwiryawan" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <img src="images/person7.jpg" alt="Person 7">
+            <div>
+                <h3>Arfa Fadilah</h3>
+                <p>Faculty: Education</p>
+                <p>Major: Early Childhood</p>
+                <p><a href="https://linkedin.com/in/arfafadilah" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+    </main>
 
-            <form action="#" method="post">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
+    <!-- JavaScript -->
+    <script>
+        // Sliding Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const slidingMenu = document.getElementById('sliding-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
 
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
+        menuBtn.addEventListener('click', () => {
+            slidingMenu.classList.add('active');
+        });
 
-                <label for="message">Your Message:</label><br>
-                <textarea id="message" name="message" rows="5" required></textarea><b
+        closeMenuBtn.addEventListener('click', () => {
+            slidingMenu.classList.remove('active');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!slidingMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                slidingMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

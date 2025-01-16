@@ -238,38 +238,72 @@ body {
     overflow: hidden; /* Prevent pseudo-elements from overflowing */
 }
 
-/* Welcome Section Background Blur */
-#welcome-section {
-    position: relative;
-    z-index: 1;
-}
-
-#welcome-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: inherit; /* Inherit the same background image */
-    filter: blur(3px); /* Apply blur effect only to the pseudo-element */
-    z-index: -1; /* Ensure it is behind the content */
-    opacity: 1; /* Fully visible */
-}
-
-/* Welcome Section Content (Unblurred) */
-#welcome-section .content {
+/* Title Section */
+.title-container {
+    text-align: center;
+    margin-top: 100px;
     position: relative;
     z-index: 2;
+}
+
+.sharp-title {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    text-shadow: -2px -2px 5px #000, 2px 2px 5px #000;
+    letter-spacing: 0.1em;
+    margin: 0;
+    display: inline-block;
+    transform: rotateX(15deg) scale(1.3); /* Creates slight upward curve */
+}
+
+.sharp-title span {
+    display: block;
+}
+
+.sharp-title .subtitle {
+    font-size: 3rem;
+    color: #f2a365;
+}
+
+/* Cracked Border Effect */
+.sharp-title::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 5px solid #fff;
+    border-radius: 15px;
+    background: none;
+    clip-path: polygon(
+        10% 0, 20% 10%, 30% 5%, 40% 15%, 50% 10%, 60% 20%,
+        70% 15%, 80% 25%, 90% 20%, 100% 30%, 100% 70%,
+        90% 85%, 80% 80%, 70% 90%, 60% 85%, 50% 95%,
+        40% 90%, 30% 95%, 20% 85%, 10% 90%, 0 70%, 0 30%
+    );
+    z-index: -1;
+    animation: crack-fade 2s ease-out infinite;
+}
+
+@keyframes crack-fade {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.4;
+    }
 }
 
 /* Mascot Animation */
 .mascot {
     position: absolute;
-    top: -50px; /* Spaced further from the content box */
+    top: -120px; /* Spaced further from the content box */
     right: -50px; /* Spaced further to the right */
     width: 120px; /* Adjust size as needed */
     height: auto;

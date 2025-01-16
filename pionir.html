@@ -192,6 +192,27 @@
         .carousel-buttons button:hover {
             background: rgba(0, 0, 0, 1);
         }
+
+        /* Ensure the image is above the text for mobile */
+        @media (max-width: 768px) {
+            .about-section {
+                display: flex;
+                flex-direction: column; /* Stack the content vertically */
+                align-items: flex-start; /* Align to the left */
+                gap: 15px; /* Space between image and text */
+            }
+        
+            .about-section img {
+                width: 100%; /* Make the image responsive */
+                max-width: 300px; /* Adjust the size of the image */
+                height: auto;
+            }
+        
+            .about-section .text {
+                text-align: left; /* Ensure the text is left-aligned */
+                padding-left: 10px;
+            }
+        }
     </style>
 </head>
 <body>

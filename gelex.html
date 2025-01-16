@@ -134,15 +134,15 @@
             margin-left: 20px;
         }
 
-        /* Carousel Section */
-        .carousel-section {
+         /* Carousel Section */
+         .carousel-section {
             margin-top: 40px;
             padding: 20px 0;
             background: #c2b280;
             border-radius: 10px;
             position: relative;
             overflow: hidden;
-            width: 70%;
+            width: 500px;
             height: 400px;
             margin: 0 auto;
             display: flex;
@@ -159,7 +159,8 @@
         .carousel-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Ensure images maintain aspect ratio and fill container */
+            object-position: center; /* Focus on the center of the image */
             flex-shrink: 0;
             border-radius: 10px;
         }
@@ -332,3 +333,4 @@ startAutoScroll();
     </script>
 </body>
 </html>
+

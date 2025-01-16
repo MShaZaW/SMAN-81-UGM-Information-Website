@@ -227,33 +227,32 @@
                 text-align: left; /* Ensure the text is left-aligned */
                 padding-left: 10px;
             }
-            .carousel-container {
-                width: 100%; /* Make the cards fit the width of the screen */
-                margin: 0 auto; /* Center it within the container */
-                padding-right: 10px;
-            }
-            
             /* If the event section is inside another container with padding, make sure the container allows it to expand */
             .event-section-container {
                 max-width: 100%; /* Allow the container to expand */
                 padding: 0 20px; /* Optional: add padding if needed */
             }
-            /* Ensure highlight section has proper spacing on the right */
             .carousel-section {
-                padding-right: 20px; /* Adjust this value based on your layout */
-                margin-right: 20px; /* Add margin if needed */
-                box-sizing: border-box;
+                margin-top: 40px;
+                padding: 20px 0;
+                background: #c2b280;
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+                width: 500px;
+                height: 400px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                }
+    
+            .carousel-container {
+                display: flex;
+                transition: transform 0.8s ease-in-out;
+                will-change: transform;
+                }
             }
-            .carousel-wrapper {
-            flex-direction: column; /* Stack the images vertically */
-            align-items: center;
-            }
-        
-            .carousel-wrapper img {
-                width: 80%; /* Shrink the images slightly to fit */
-                margin-bottom: 15px;
-            }
-        }
     </style>
 </head>
 <body>

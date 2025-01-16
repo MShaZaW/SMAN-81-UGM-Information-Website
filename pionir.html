@@ -192,6 +192,17 @@
         .carousel-buttons button:hover {
             background: rgba(0, 0, 0, 1);
         }
+        /* Optionally, if using flexbox to display images horizontally */
+        .carousel-wrapper {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent images from wrapping */
+            overflow: hidden;
+        }
+        
+        .carousel-wrapper img {
+            margin-right: 10px; /* Adjust the space between images */
+            flex-shrink: 0; /* Prevent images from shrinking */
+        }
 
         /* Ensure the image is above the text for mobile */
         @media (max-width: 768px) {
@@ -219,6 +230,7 @@
             .carousel-container {
                 width: 100%; /* Make the cards fit the width of the screen */
                 margin: 0 auto; /* Center it within the container */
+                padding-right: 10px;
             }
             
             /* If the event section is inside another container with padding, make sure the container allows it to expand */
@@ -231,6 +243,15 @@
                 padding-right: 20px; /* Adjust this value based on your layout */
                 margin-right: 20px; /* Add margin if needed */
                 box-sizing: border-box;
+            }
+            .carousel-wrapper {
+            flex-direction: column; /* Stack the images vertically */
+            align-items: center;
+            }
+        
+            .carousel-wrapper img {
+                width: 80%; /* Shrink the images slightly to fit */
+                margin-bottom: 15px;
             }
         }
     </style>

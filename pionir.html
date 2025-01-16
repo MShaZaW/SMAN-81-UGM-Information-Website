@@ -200,6 +200,10 @@
                 flex-direction: column; /* Stack the content vertically */
                 align-items: flex-start; /* Align to the left */
                 gap: 15px; /* Space between image and text */
+                width: 100%; /* Use 100% width of its parent */
+                max-width: 100%; /* Make sure it doesn't get constrained */
+                padding: 20px;
+                box-sizing: border-box;
             }
         
             .event-section img {
@@ -214,10 +218,19 @@
             }
             .carousel-container {
                 width: 100%; /* Make the cards fit the width of the screen */
-                display: flex;
+                margin: 0 auto; /* Center it within the container */
             }
-            .event-section {
-                width: 85%;
+            
+            /* If the event section is inside another container with padding, make sure the container allows it to expand */
+            .event-section-container {
+                max-width: 100%; /* Allow the container to expand */
+                padding: 0 20px; /* Optional: add padding if needed */
+            }
+            /* Ensure highlight section has proper spacing on the right */
+            .carousel-section {
+                padding-right: 20px; /* Adjust this value based on your layout */
+                margin-right: 20px; /* Add margin if needed */
+                box-sizing: border-box;
             }
         }
     </style>

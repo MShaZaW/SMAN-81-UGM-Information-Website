@@ -145,8 +145,9 @@
 
         @media (max-width: 768px) {
             #map {
-                height: 70vh; /* Make the map height responsive on smaller screens */
+                height: 100%; /* Make the map height responsive on smaller screens */
             }
+            #
         }
     </style>
 </head>
@@ -261,8 +262,8 @@
             const marker = L.marker(place.position, {
                 icon: L.icon({
                     iconUrl: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-                    iconSize: [32, 32],
-                    iconAnchor: [16, 32],
+                    iconSize: [60, 60],
+                    iconAnchor: [30, 60],
                 })
             }).addTo(map);
 

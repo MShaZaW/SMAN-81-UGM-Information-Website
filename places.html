@@ -262,8 +262,8 @@
             const marker = L.marker(place.position, {
                 icon: L.icon({
                     iconUrl: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-                    iconSize: [60, 60],
-                    iconAnchor: [30, 60],
+                    iconSize: isMobile ? [48, 48] : [32, 32], // Larger size for mobile
+                    iconAnchor: isMobile ? [24, 48] : [16, 32], // Adjust anchor point accordingly
                 })
             }).addTo(map);
 
